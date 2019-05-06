@@ -2,9 +2,6 @@
 //   res.success('Hi');
 // });
 
-Parse.Cloud.beforeSave('ReservationReq', (req) => {
-  logger.info('beforeSave')
-})
 // Parse.Cloud.afterSave('ReservationReq', async (req) => {
 //   logger.info('afterSave')
 //   if (req.object.get('isApproved') === true) {
