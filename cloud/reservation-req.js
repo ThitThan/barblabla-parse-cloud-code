@@ -2,7 +2,7 @@ Parse.Cloud.define('hello', function(req, res) {
   res.success('Hi');
 });
 
-Parse.Cloud.afterSave('ReservationReq' async (req) => {
+Parse.Cloud.afterSave('ReservationReq', async (req) => {
   if (req.object.get('isApproved') === true) {
     return
   }
