@@ -1,6 +1,6 @@
-Parse.Cloud.define('hello', function(req, res) {
-  res.success('Hi');
-});
+// Parse.Cloud.define('hello', function(req, res) {
+//   res.success('Hi');
+// });
 
 Parse.Cloud.beforeSave('ReservationReq', (req) => {
   logger.info('beforeSave')
