@@ -1,7 +1,7 @@
 require('cloud/twitch');
 require('cloud/hello');
-// require('cloud/reservation-req');
+require('cloud/reservation-req');
 
 Parse.Cloud.beforeSave('ReservationReq', (req) => {
-  logger.info('beforeSave')
+  console.log('beforeSave')
 })
