@@ -4,26 +4,26 @@ Parse.Cloud.afterSave('ReservationReq', (req) => {
     return
   }
 
-  let customer = req.object.get('customer')
+  var customer = req.object.get('customer')
 
-  let amount = req.object.get('amount')
-  let remaining = amount
+  var amount = req.object.get('amount')
+  var remaining = amount
   
-  let date = req.object.get('date')
+  var date = req.object.get('date')
   // for querying
-  let dateStart = new Date(date)
+  var dateStart = new Date(date)
   dateStart.setHours(0,0,0,0)
-  let dateEnd = new Date(date)
+  var dateEnd = new Date(date)
   dateEnd.setHours(23,59,59,999)
 
   
   // table
-  let query = new Parse.Query('Tableja')
+  var query = new Parse.Query('Tableja')
   query.ascending('TableNumber')
   query.find().then(
     (tables) => {
       for (var i = 0; i < tables.length; i++) {
-        let t = tables[i]
+        var t = tables[i]
         t.relation('Reservations').then(
           (reservList) => {
 
@@ -37,7 +37,7 @@ Parse.Cloud.afterSave('ReservationReq', (req) => {
                 // if table is available
                 if (remaining > 0 && !r) {
                   // save Reservation
-                  let newReserv = new Parse.Object('Reservation')
+                  var newReserv = new Parse.Object('Reservation')
                   newReserv.set('customer', customer)
                   newReserv.set('Table', t)
                   newReserv.set('date', date)
