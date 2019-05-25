@@ -104,7 +104,7 @@ Parse.Cloud.afterSave('ReservationReq', (req) => {
       var reservedTableIds = []
       for (var i = 0; i < results.length; i++) {
         console.log(results[i].get('Table').id)
-        request.log.info(results[i].get('Table').id)
+        // request.log.info(results[i].get('Table').id)
 
         reservedTableIds.push(results[i].get('Table').id)
       }
@@ -114,7 +114,7 @@ Parse.Cloud.afterSave('ReservationReq', (req) => {
       var tableQuery = new Parse.Query('Tableja')
       // .matchesKeyInQuery('objectIds', 'Tableja.objectId', reservQuery)
 
-      tableQuery.find({useMasterKey: true}).then(
+      tableQuery.find().then(
         (tables) => {
           // console.log(tables)
           for (var i = 0; i < tables.length; i++) {
@@ -126,6 +126,8 @@ Parse.Cloud.afterSave('ReservationReq', (req) => {
             var t = tables[i]
 
             // if table is available
+            console.log(reservedTableIds.includes(t.id) === false)
+            request.log.info(reservedTableIds.includes(t.id) === false)
             if (reservedTableIds.includes(t.id) === false) {
               var tableNo = tables[i].get('TableNumber')
 
