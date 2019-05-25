@@ -66,6 +66,8 @@
 // });
 Parse.Cloud.afterSave('ReservationReq', (req) => {
   console.log('afterSave!!')
+  request.log.info('afterSave!!')
+
   // customer
   var customer = req.object.get('customer')
 
