@@ -65,8 +65,8 @@
 //   )
 // });
 Parse.Cloud.afterSave('ReservationReq', (req) => {
-  console.log('afterSave!!')
-  request.log.info('afterSave!!')
+  // console.log('afterSave!!')
+  // request.log.info('afterSave!!')
 
   // customer
   var customer = req.object.get('customer')
@@ -103,7 +103,8 @@ Parse.Cloud.afterSave('ReservationReq', (req) => {
     (results) => {
       var reservedTableIds = []
       for (var i = 0; i < results.length; i++) {
-        // console.log(results[i].get('Table').id)
+        console.log(results[i].get('Table').id)
+        request.log.info(results[i].get('Table').id)
 
         reservedTableIds.push(results[i].get('Table').id)
       }
